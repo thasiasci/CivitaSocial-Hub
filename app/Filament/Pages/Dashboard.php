@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Filament\Pages;
+
+use Filament\Forms\Components\DatePicker;
+use Filament\Pages\Dashboard as BaseDashboard;
+use Filament\Pages\Dashboard\Concerns\HasFiltersForm;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
+use App\Models\OpdChannel;
+use Filament\Forms\Components\Select;
+use App\Filament\Widgets\ChannelCommentStats;
+use App\Filament\Widgets\GlobalStats;
+use App\Filament\Widgets\CommentsPerDayChart;
+use App\Filament\Widgets\TopVideosWidget;
+
+
+class Dashboard extends BaseDashboard
+{
+    use HasFiltersForm;
+     public function getWidgets(): array
+    {
+        return [
+            GlobalStats::class, // Widget global
+            ChannelCommentStats::class, // Widget interaktif
+            CommentsPerDayChart::class,
+            TopVideosWidget::class,
+        ];
+    }
+
+
+    public function filtersForm(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Section::make()
+                    ->schema([
+                        Select::make('channelId') // Filter Channel
+                            ->label('Pilih Channel')
+                            ->options(OpdChannel::pluck('opd_name', 'channel_id'))
+                            ->placeholder('Semua Channel')
+                            ->live(),
+                        DatePicker::make('startDate')
+                            ->live(),
+                        DatePicker::make('endDate')
+                            ->live(),
+                        // ...
+                    ])
+                    ->columns(3),
+            ]);
+    }
+}
