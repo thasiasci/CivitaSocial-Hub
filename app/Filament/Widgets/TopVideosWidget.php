@@ -67,7 +67,7 @@ class TopVideosWidget extends BaseWidget
 
         return [
             Stat::make($title, new HtmlString($videoList))
-                ->description("Total: " . count($topVideos) . " video terpopuler berdasarkan engagement")
+                ->description("Total: " . count($topVideos) . " video terpopuler ")
                 ->descriptionIcon('heroicon-o-fire')
                 ->color('warning')
         ];
