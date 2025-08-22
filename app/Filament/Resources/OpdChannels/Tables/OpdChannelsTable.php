@@ -41,7 +41,7 @@ class OpdChannelsTable
                 ViewAction::make(),
                 EditAction::make(),
                 DeleteAction::make()
-                    ->modalHeading('Hapus Ejaan') 
+                    ->modalHeading('Hapus OPD Cahnnel') 
                     ->modalDescription('Apakah kamu yakin ingin menghapus data OPD yang terpilih?') // <-- Ubah deskripsi
                     ->modalSubmitActionLabel('Ya, Hapus') 
                     ->modalCancelActionLabel(), 

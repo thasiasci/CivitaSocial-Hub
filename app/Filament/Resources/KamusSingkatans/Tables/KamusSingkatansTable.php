@@ -36,7 +36,7 @@ class KamusSingkatansTable
                 ViewAction::make(),
                 EditAction::make(),
                 DeleteAction::make()
-                    ->modalHeading('Hapus Ejaan') 
+                    ->modalHeading('Hapus Singkatan') 
                     ->modalDescription('Apakah kamu yakin ingin menghapus singkatan yang terpilih?') // <-- Ubah deskripsi
                     ->modalSubmitActionLabel('Ya, Hapus') 
                     ->modalCancelActionLabel(), 
