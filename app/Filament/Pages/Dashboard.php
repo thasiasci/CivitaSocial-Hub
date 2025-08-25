@@ -13,6 +13,7 @@ use App\Filament\Widgets\ChannelCommentStats;
 use App\Filament\Widgets\GlobalStats;
 use App\Filament\Widgets\CommentsPerDayChart;
 use App\Filament\Widgets\TopVideosWidget;
+use Filament\Forms\Components\Grid;
 
 
 class Dashboard extends BaseDashboard
@@ -34,19 +35,23 @@ class Dashboard extends BaseDashboard
         return $schema
             ->components([
                 Section::make()
+                    ->columns(3) // 3 kolom dalam satu baris
                     ->schema([
                         Select::make('channelId') // Filter Channel
                             ->label('Pilih Channel')
                             ->options(OpdChannel::pluck('opd_name', 'channel_id'))
                             ->placeholder('Semua Channel')
                             ->live(),
+
                         DatePicker::make('startDate')
+                            ->label('Tanggal Mulai')
                             ->live(),
+
                         DatePicker::make('endDate')
+                            ->label('Tanggal Selesai')
                             ->live(),
-                        // ...
                     ])
-                    ->columns(3),
+                    ->columnSpanFull(), // Biar section-nya full width
             ]);
     }
 }
