@@ -11,14 +11,14 @@ use Filament\Widgets\Concerns\InteractsWithPageFilters;
 
 class CommentsPerDayChart extends ChartWidget
 {
-     use InteractsWithPageFilters; 
-protected ?string $heading = 'Tren Komentar Per Tahun';
+    use InteractsWithPageFilters; 
     
+    protected ?string $heading = 'Tren Komentar Per Tahun';
     protected static ?int $sort = 3;
 
     protected function getType(): string
     {
-        return 'line'; // Ini akan membuat grafik garis
+        return 'line'; 
     }
 
     protected function getData(): array
@@ -30,17 +30,17 @@ protected ?string $heading = 'Tren Komentar Per Tahun';
 
         $query = KomentarUtama::query();
 
-        // Terapkan filter channel jika ada
+        //  filter channel jika ada
         if ($channelId) {
             $query->where('channelId', $channelId);
         }
 
-        // Terapkan filter tanggal jika ada
+        //  filter tanggal jika ada
         if ($startDate && $endDate) {
             $query->whereBetween('publishedAt', [$startDate, $endDate]);
         }
 
-        // Kelompokkan komentar per hari
+        // Kelompokkan komentar per tahun
         $dataPerYear = $query->selectRaw('YEAR(publishedAt) as year, count(*) as count')
             ->groupBy('year')
             ->orderBy('year')
@@ -56,8 +56,67 @@ protected ?string $heading = 'Tren Komentar Per Tahun';
                     'borderColor' => '#3b82f6',
                     'fill' => true,
                     'pointRadius' => 5,
+                    'tension' => 0.3, 
                 ],
             ],
+        ];
+    }
+
+    protected function getOptions(): array
+    {
+        return [
+            'plugins' => [
+                'legend' => [
+                    'display' => true,
+                    'position' => 'bottom',
+                    'labels' => [
+                        'padding' => 12,
+                        'boxWidth' => 12,
+                        'boxHeight' => 12,
+                        'font' => [
+                            'size' => 12,
+                        ],
+                    ],
+                ],
+            ],
+            'maintainAspectRatio' => false,
+            'responsive' => true,
+            'layout' => [
+                'padding' => [
+                    'top' => 10,
+                    'right' => 15,
+                    'bottom' => 40, 
+                    'left' => 15,
+                ],
+            ],
+            'scales' => [
+                'y' => [
+                    'beginAtZero' => true,
+                    'grid' => [
+                        'display' => true,
+                        'color' => 'rgba(0, 0, 0, 0.1)',
+                    ],
+                    'ticks' => [
+                        'padding' => 10,
+                        'font' => [
+                            'size' => 11,
+                        ],
+                    ],
+                ],
+                'x' => [
+                    'grid' => [
+                        'display' => false,
+                    ],
+                    'ticks' => [
+                        'padding' => 10,
+                        'font' => [
+                            'size' => 11,
+                        ],
+                    ],
+                ],
+            ],
+            
+            'aspectRatio' => 1.3,
         ];
     }
 }

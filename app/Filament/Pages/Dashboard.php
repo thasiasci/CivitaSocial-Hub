@@ -13,6 +13,7 @@ use App\Filament\Widgets\ChannelCommentStats;
 use App\Filament\Widgets\GlobalStats;
 use App\Filament\Widgets\CommentsPerDayChart;
 use App\Filament\Widgets\TopVideosWidget;
+use App\Filament\Widgets\CommentSentimentChart;
 use Filament\Forms\Components\Grid;
 
 
@@ -25,6 +26,7 @@ class Dashboard extends BaseDashboard
             GlobalStats::class, // Widget global
             ChannelCommentStats::class, // Widget interaktif
             CommentsPerDayChart::class,
+            CommentSentimentChart::class,
             TopVideosWidget::class,
         ];
     }

@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
+use Filament\Actions\ActionGroup;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -33,13 +34,20 @@ class KamusSingkatansTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
-                DeleteAction::make()
-                    ->modalHeading('Hapus Singkatan') 
-                    ->modalDescription('Apakah kamu yakin ingin menghapus singkatan yang terpilih?') // <-- Ubah deskripsi
-                    ->modalSubmitActionLabel('Ya, Hapus') 
-                    ->modalCancelActionLabel(), 
+                ActionGroup::make([
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make()
+                        ->modalHeading('Hapus OPD Channel') 
+                        ->modalDescription('Apakah kamu yakin ingin menghapus data OPD yang terpilih?')
+                        ->modalSubmitActionLabel('Ya, Hapus') 
+                        ->modalCancelActionLabel('Batal'),
+                ])
+                ->label('Aksi')
+                ->icon('heroicon-m-ellipsis-vertical')
+                ->size('sm')
+                ->color('gray')
+                ->button(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

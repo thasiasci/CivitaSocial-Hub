@@ -19,6 +19,10 @@ class OpdChannelForm
                     ->label('Username Youtube')
                     ->required()
                     ->default(null),
+                //TextInput::make('channel_id')
+                   // ->label('Channel ID')
+                    //->required()
+                    //->default(null),
             ]);
     }
 }
