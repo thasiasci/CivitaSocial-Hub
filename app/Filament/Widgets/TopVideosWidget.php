@@ -16,6 +16,12 @@ class TopVideosWidget extends BaseWidget
     
     protected static ?int $sort = 4;
     protected int | string | array $columnSpan = 'full';
+    
+    // Override method untuk mengatur jumlah kolom menjadi 1
+    protected function getColumns(): int
+    {
+        return 1;
+    }
 
     protected function getStats(): array
     {
@@ -35,8 +41,7 @@ class TopVideosWidget extends BaseWidget
         foreach ($topVideos as $index => $video) {
             $rank = $index + 1;
             
-            $videoList .= "<div style='margin-bottom: 8px; padding: 6px; background: " . 
-                         ($rank <= 3 ? '#f8fafc' : '#ffffff') . "; border-radius: 6px; border-left: 3px solid " .
+            $videoList .= "<div style='margin-bottom: 8px; padding: 6px; border-radius: 6px; border-left: 3px solid " .
                          match($rank) {
                              1 => '#f59e0b',
                              2 => '#6b7280', 
@@ -45,17 +50,17 @@ class TopVideosWidget extends BaseWidget
                          } . ";'>";
             
             $videoList .= "<div style='margin-bottom: 4px;'>";
-            $videoList .= "<strong style='color: #1f2937; font-size: 13px; line-height: 1.4; word-wrap: break-word; display: block;'>{$rank}. " . htmlspecialchars($video['title']) . "</strong>";
+            $videoList .= "<strong style='font-size: 20px; line-height: 1.4; word-wrap: break-word; display: block;'>{$rank}. " . htmlspecialchars($video['title']) . "</strong>";
             $videoList .= "</div>";
             
-            $videoList .= "<div style='font-size: 11px; color: #6b7280; margin-left: 16px;'>";
+            $videoList .= "<div style='font-size: 15px; margin-left: 16px;'>";
             $videoList .= "<span style='margin-right: 12px;'>Channel: " . htmlspecialchars($video['channel_name']) . "</span>";
             $videoList .= "<span style='margin-right: 12px;'>Komentar: " . number_format($video['total_komentar_utama']) . "</span>";
             $videoList .= "</div>";
             
             if ($video['youtube_url']) {
                 $videoList .= "<div style='margin-left: 16px; margin-top: 4px;'>";
-                $videoList .= "<a href='" . htmlspecialchars($video['youtube_url']) . "' target='_blank' style='font-size: 10px; color: #dc2626; text-decoration: none; background: #fee2e2; padding: 2px 6px; border-radius: 4px;'>YouTube</a>";
+                $videoList .= "<a href='" . htmlspecialchars($video['youtube_url']) . "' target='_blank' style='font-size: 10px; text-decoration: none; background: #fb0000b1; padding: 2px 6px; border-radius: 4px; color: white;'>YouTube</a>";
                 $videoList .= "</div>";
             }
             
@@ -67,7 +72,7 @@ class TopVideosWidget extends BaseWidget
 
         return [
             Stat::make($title, new HtmlString($videoList))
-                ->description("Total: " . count($topVideos) . " video terpopuler ")
+                ->description(" " . count($topVideos) . " video terpopuler ")
                 ->descriptionIcon('heroicon-o-fire')
                 ->color('warning')
         ];

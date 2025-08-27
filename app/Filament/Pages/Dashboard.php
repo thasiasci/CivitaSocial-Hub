@@ -20,7 +20,8 @@ use Filament\Forms\Components\Grid;
 class Dashboard extends BaseDashboard
 {
     use HasFiltersForm;
-     public function getWidgets(): array
+    
+    public function getWidgets(): array
     {
         return [
             GlobalStats::class, // Widget global
@@ -31,7 +32,6 @@ class Dashboard extends BaseDashboard
         ];
     }
 
-
     public function filtersForm(Schema $schema): Schema
     {
         return $schema
@@ -39,9 +39,11 @@ class Dashboard extends BaseDashboard
                 Section::make()
                     ->columns(3) // 3 kolom dalam satu baris
                     ->schema([
-                        Select::make('channelId') // Filter Channel
+                        Select::make('channelId') 
                             ->label('Pilih Channel')
-                            ->options(OpdChannel::pluck('opd_name', 'channel_id'))
+                            ->options(OpdChannel::whereNotNull('channel_id')
+                                    ->where('channel_id', '!=', '')
+                                    ->pluck('opd_name', 'channel_id'))
                             ->placeholder('Semua Channel')
                             ->live(),
 
@@ -53,7 +55,7 @@ class Dashboard extends BaseDashboard
                             ->label('Tanggal Selesai')
                             ->live(),
                     ])
-                    ->columnSpanFull(), // Biar section-nya full width
+                    ->columnSpanFull(), 
             ]);
     }
 }
