@@ -14,6 +14,7 @@ use App\Filament\Widgets\GlobalStats;
 use App\Filament\Widgets\CommentsPerDayChart;
 use App\Filament\Widgets\TopVideosWidget;
 use App\Filament\Widgets\CommentSentimentChart;
+use App\Filament\Widgets\KamusAnalisaWidget;
 use Filament\Forms\Components\Grid;
 
 
@@ -25,6 +26,7 @@ class Dashboard extends BaseDashboard
     {
         return [
             GlobalStats::class, // Widget global
+            KamusAnalisaWidget::class,
             ChannelCommentStats::class, // Widget interaktif
             CommentsPerDayChart::class,
             CommentSentimentChart::class,
