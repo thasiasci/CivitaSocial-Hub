@@ -23,23 +23,22 @@ class KamusAnalisaWidget extends BaseWidget
     {
         $singkatanStats = $this->getSingkatanAnalysis();
         $ejaanStats = $this->getEjaanAnalysis();
-        $penggunaanStats = $this->getPenggunaanAnalysis();
 
         return [
-            // Stat 1: Total Kamus
+            
             Stat::make('Total Kamus', number_format($singkatanStats['total'] + $ejaanStats['total']))
                 ->description("Singkatan: {$singkatanStats['total']} | Ejaan: {$ejaanStats['total']}")
                 ->descriptionIcon('heroicon-o-book-open'),
 
-            // Stat 2: Singkatan Terpopuler
+           
             Stat::make('Singkatan Terpopuler', new HtmlString($this->formatTopSingkatan($singkatanStats['top'])))
-                ->description("Berdasarkan penggunaan dalam komentar")
-                ->descriptionIcon('heroicon-o-hashtag'),
+                ->description("Berdasarkan penggunaan dalam komentar."),
+               
 
  
             Stat::make('Kesalahan Ejaan Terbanyak', new HtmlString($this->formatTopEjaan($ejaanStats['top'])))
-                ->description("Yang paling sering ditemukan dalam komentar")
-                ->descriptionIcon('heroicon-o-exclamation-triangle'),
+                ->description("Paling sering ditemukan dalam komentar."),
+    
         ];
     }
 
@@ -129,12 +128,7 @@ class KamusAnalisaWidget extends BaseWidget
         ];
     }
 
-    private function getPenggunaanAnalysis(): array
-    {
-        // Analisa tambahan bisa dikembangkan disini
-        return [];
-    }
-
+    
     private function formatTopSingkatan(array $topSingkatan): string
     {
         if (empty($topSingkatan)) {
@@ -166,7 +160,7 @@ class KamusAnalisaWidget extends BaseWidget
             $rank = $index + 1;
             
             $html .= "<div class='mb-1 p-1.5 border-l-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800' style='margin-bottom: 4px; padding: 3px 6px;'>";
-            $html .= "<span class='line-through text-gray-600 dark:text-gray-400'>{$item['ejaan_salah']}</span>";
+            $html .= "<span class='line-through text-gray-600 dark:text-gray-400'>{$rank } . {$item['ejaan_salah']}</span>";
             $html .= " → <strong class='text-gray-900 dark:text-gray-100'>{$item['ejaan_benar']}</strong>";
             $html .= "<div class='text-gray-600 dark:text-gray-400' style='font-size: 12px; margin-top: 2px;'>Ditemukan: {$item['usage_count']}x</div>";
             $html .= "</div>";
