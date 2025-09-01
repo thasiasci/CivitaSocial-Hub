@@ -140,7 +140,7 @@ class KamusAnalisaWidget extends BaseWidget
             $rank = $index + 1;
             
             $html .= "<div class='mb-1 p-1.5 border-l-2 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800' style='margin-bottom: 4px; padding: 3px 6px;'>";
-            $html .= "<strong class='text-gray-900 dark:text-gray-100'>{$rank }  .  {$item['singkatan']}</strong> → <span class='text-gray-700 dark:text-gray-300'>{$item['kepanjangan']}</span>";
+            $html .= "<strong class='text-gray-900 dark:text-gray-100'>{$rank }  .   {$item['singkatan']}</strong> → <span class='text-gray-700 dark:text-gray-300'>{$item['kepanjangan']}</span>";
             $html .= "<div class='text-gray-600 dark:text-gray-400' style='font-size: 12px; margin-top: 2px;'>Digunakan: {$item['usage_count']}x</div>";
             $html .= "</div>";
         }

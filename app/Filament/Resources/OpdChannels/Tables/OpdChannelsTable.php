@@ -49,7 +49,6 @@ class OpdChannelsTable
                         ->modalCancelActionLabel('Batal'),
                 ])
                 ->label('Aksi')
-                ->icon('heroicon-m-ellipsis-vertical')
                 ->size('sm')
                 ->color('gray')
                 ->button(),
@@ -59,6 +58,7 @@ class OpdChannelsTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
+                
             ]);
     }
 }
