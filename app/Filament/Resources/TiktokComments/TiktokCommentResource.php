@@ -18,7 +18,7 @@ use UnitEnum;
 class TiktokCommentResource extends Resource
 {
     protected static ?string $model = TiktokComment::class;
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';  
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-chat-bubble-left-right';  
     protected static ?string $navigationLabel = 'Komentar Tiktok';
     protected static ?string $pluralModelLabel = 'Data Komentar Tiktok';
     protected static string | UnitEnum | null $navigationGroup = 'Komentar Tiktok';
