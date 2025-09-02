@@ -8,17 +8,27 @@ use App\Models\KamusSingkatan;
 use App\Models\KamusEjaan;
 use App\Models\KomentarUtama;
 use App\Models\KomentarBalasan;
-use Filament\Widgets\Concerns\InteractsWithPageFilters;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;
 
 class KamusAnalisaWidget extends BaseWidget
 {
-    use InteractsWithPageFilters;
+    
     
     protected static ?int $sort = 5;
     protected int | string | array $columnSpan = 'full';
-
+    protected static bool $isDiscovered = false;
+    
+    // Atau gunakan ini untuk disable di dashboard secara spesifik
+    public static function canView(): bool
+    {
+        // Cek apakah sedang di dashboard
+        if (request()->routeIs('filament.admin.pages.dashboard')) {
+            return false;
+        }
+        return true;
+    }
     protected function getStats(): array
     {
         $singkatanStats = $this->getSingkatanAnalysis();
@@ -169,4 +179,5 @@ class KamusAnalisaWidget extends BaseWidget
 
         return $html;
     }
+    
 }

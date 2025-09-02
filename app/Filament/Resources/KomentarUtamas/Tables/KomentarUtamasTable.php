@@ -24,6 +24,7 @@ class KomentarUtamasTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->striped()
             ->columns([
                 TextColumn::make('opdChannel.opd_name')
                     ->label('Nama OPD')

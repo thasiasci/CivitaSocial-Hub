@@ -26,7 +26,6 @@ class Dashboard extends BaseDashboard
     {
         return [
             GlobalStats::class, // Widget global
-            KamusAnalisaWidget::class,
             ChannelCommentStats::class, // Widget interaktif
             CommentsPerDayChart::class,
             CommentSentimentChart::class,
@@ -36,6 +35,7 @@ class Dashboard extends BaseDashboard
 
     public function filtersForm(Schema $schema): Schema
     {
+        logger('filtersForm dipanggil');
         return $schema
             ->components([
                 Section::make()
@@ -60,4 +60,6 @@ class Dashboard extends BaseDashboard
                     ->columnSpanFull(), 
             ]);
     }
+    
+       
 }

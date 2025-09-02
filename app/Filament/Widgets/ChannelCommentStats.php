@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 class ChannelCommentStats extends BaseWidget
 {
     use InteractsWithPageFilters;
+    //protected static ?int $sort = 2;
     
 
     protected function getHeading(): ?string
@@ -61,9 +62,9 @@ class ChannelCommentStats extends BaseWidget
             ->first();
 
         return [
-            Stat::make('Total Video', $jumlahVideo)
+            Stat::make('Total Video',number_format ($jumlahVideo))
                 ->description('Jumlah video dalam Channel'),
-            Stat::make('Total Komentar', $totalKomentar)
+            Stat::make('Total Komentar', number_format($totalKomentar))
                 ->description('Jumlah Komentar dalam Channel'),
             Stat::make('Pemberi Komentar Terbanyak', $penulisPalingAktif ? $penulisPalingAktif->authorDisplayName : 'Tidak ditemukan')
                 ->description('Kontributor Komentar Utama'),
