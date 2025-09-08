@@ -24,7 +24,7 @@ class KomentarBalasanResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-chat-bubble-left-right';
     protected static ?string $navigationLabel = 'Komentar Balasan';
     protected static ?string $pluralModelLabel = 'Data Komentar Balasan';
-    protected static string | UnitEnum | null $navigationGroup = 'Komentar Youtube';
+    protected static string | UnitEnum | null $navigationGroup = 'Youtube';
     protected static ?int $navigationSort = 2; 
     protected static ?string $navigationBadgeTooltip = 'Jumlah Komentar Balasan';
     public static function getNavigationBadge(): ?string

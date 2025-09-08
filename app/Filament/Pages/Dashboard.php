@@ -14,32 +14,21 @@ use App\Filament\Widgets\GlobalStats;
 use App\Filament\Widgets\CommentsPerDayChart;
 use App\Filament\Widgets\TopVideosWidget;
 use App\Filament\Widgets\CommentSentimentChart;
-use App\Filament\Widgets\KamusAnalisaWidget;
 use Filament\Forms\Components\Grid;
+use UnitEnum;
 
 
 class Dashboard extends BaseDashboard
 {
     use HasFiltersForm;
-    
-    public function getWidgets(): array
-    {
-        return [
-            GlobalStats::class, // Widget global
-            ChannelCommentStats::class, // Widget interaktif
-            CommentsPerDayChart::class,
-            CommentSentimentChart::class,
-            TopVideosWidget::class,
-        ];
-    }
+    protected static string | UnitEnum | null $navigationGroup = 'Dashboard';
 
     public function filtersForm(Schema $schema): Schema
     {
-        logger('filtersForm dipanggil');
         return $schema
             ->components([
                 Section::make()
-                    ->columns(3) // 3 kolom dalam satu baris
+                    ->columns(3)
                     ->schema([
                         Select::make('channelId') 
                             ->label('Pilih Channel')
@@ -60,6 +49,15 @@ class Dashboard extends BaseDashboard
                     ->columnSpanFull(), 
             ]);
     }
-    
-       
+
+    public function getWidgets(): array
+    {
+        return [
+            GlobalStats::class, // Widget global
+            ChannelCommentStats::class, // Widget interaktif
+            CommentsPerDayChart::class,
+            CommentSentimentChart::class,
+            TopVideosWidget::class,
+        ];
+    }
 }

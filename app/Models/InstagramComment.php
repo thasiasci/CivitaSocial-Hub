@@ -9,8 +9,5 @@ class InstagramComment extends Model
 {
     use HasFactory;
     protected $table = 'instagram_comments';
-    protected $fillable = [
-        'authorProfileUrl', 'authorProfileImageUrl', 'authorDisplayName',
-        'commentUrl', 'publishedAt', 'comment', 'sentimen', 'likeCount', 'replyCount'
-    ];
+    protected $fillable = ['link_konten', 'periode', 'comment', 'sentimen', 'bulan'];
 }

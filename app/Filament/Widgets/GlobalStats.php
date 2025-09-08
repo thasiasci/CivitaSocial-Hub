@@ -15,7 +15,7 @@ class GlobalStats extends BaseWidget
     {
         return 'Ringkasan Statistik Global';
     }
-    //protected static ?int $sort = 1;
+    protected static ?int $sort = 1;
 
     protected function getStats(): array
     {
@@ -26,11 +26,17 @@ class GlobalStats extends BaseWidget
 
         return [
             Stat::make('Koneksi Channel', "{$channelsWithId}/{$totalChannels}")
-                ->description(new HtmlString("<strong>Sudah Terdaftar dengan ID:</strong> {$channelsWithId} channel<br><strong>Total channel di database:</strong> {$totalChannels} channel")),
+                ->description(new HtmlString("<strong>Sudah Terdaftar dengan ID:</strong> {$channelsWithId} channel<br><strong>Total channel di database:</strong> {$totalChannels} channel"))
+                ->descriptionIcon('heroicon-m-check-badge') 
+                ->color('primary'),
             stat::make('Jumlah Komentar Utama', number_format ($totalKomentar))
-                ->description(' Komentar Utama seluruh Channel.'),
+                ->description(' Komentar Utama seluruh Channel.')
+                ->descriptionIcon('heroicon-m-chat-bubble-left-right')
+                ->color('primary'),
             stat::make(' Jumlah Komentar Balasan',  number_format($totalKomentarBalasan))
-                ->description(' Komentar Balasan seluruh Channel.'),
+                ->description(' Komentar Balasan seluruh Channel.')
+                ->descriptionIcon('heroicon-m-chat-bubble-left-right') // Ikon untuk komentar
+                ->color('primary'),
         ];
     }
 }

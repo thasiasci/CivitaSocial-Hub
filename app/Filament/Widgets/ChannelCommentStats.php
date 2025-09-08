@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 class ChannelCommentStats extends BaseWidget
 {
     use InteractsWithPageFilters;
-    //protected static ?int $sort = 2;
+    protected static ?int $sort = 2;
     
 
     protected function getHeading(): ?string

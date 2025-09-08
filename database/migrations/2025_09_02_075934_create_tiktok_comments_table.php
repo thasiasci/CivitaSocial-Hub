@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('tiktok_comments', function (Blueprint $table) {
             $table->id();
+            $table->string('videoId')->nullable();
             $table->longText('authorProfileUrl')->nullable();
-            $table->longText('authorProfileImageUrl')->nullable(); 
+            $table->longText('authorProfileImageUrl')->nullable();
             $table->string('authorDisplayName')->nullable();
             $table->dateTime('publishedAt')->nullable();
-            $table->longText('comment');
+            $table->longText('comment')->nullable();
             $table->string('sentimen')->nullable();
             $table->integer('likeCount')->nullable();
-            $table->string('replyCount')->nullable();
+            $table->integer('replyCount')->nullable();
             $table->timestamps();
         });
     }

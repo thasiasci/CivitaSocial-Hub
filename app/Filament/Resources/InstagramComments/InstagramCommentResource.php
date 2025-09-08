@@ -22,7 +22,7 @@ class InstagramCommentResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';  
     protected static ?string $navigationLabel = 'Komentar Instagram';
     protected static ?string $pluralModelLabel = 'Data Komentar Instagram';
-    protected static string | UnitEnum | null $navigationGroup = 'Komentar Instagram';
+    protected static string | UnitEnum | null $navigationGroup = 'Instagram';
     protected static ?string $navigationBadgeTooltip = 'Jumlah Komentar instagram';
     protected static ?string $recordTitleAttribute = 'authorDisplayName';
     public static function getNavigationBadge(): ?string

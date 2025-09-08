@@ -24,7 +24,7 @@ class KomentarUtamaResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
     protected static ?string $navigationLabel = 'Komentar Utama';
     protected static ?string $pluralModelLabel = 'Data Komentar Utama';
-    protected static string | UnitEnum | null $navigationGroup = 'Komentar Youtube';
+    protected static string | UnitEnum | null $navigationGroup = 'Youtube';
     protected static ?int $navigationSort = 1; 
     protected static ?string $navigationBadgeTooltip = 'Jumlah Komentar Utama';
     public static function getNavigationBadge(): ?string

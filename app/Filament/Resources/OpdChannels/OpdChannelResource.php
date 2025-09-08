@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class OpdChannelResource extends Resource
 {
@@ -24,6 +25,7 @@ class OpdChannelResource extends Resource
     protected static ?string $navigationLabel = 'OPD Channels';
     protected static ?string $pluralModelLabel = 'Data Channel Organisasi Perangkat Daerah';
     protected static ?string $navigationBadgeTooltip = 'Jumlah OPD Channels';
+    protected static string | UnitEnum | null $navigationGroup = 'Youtube';
      public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();
