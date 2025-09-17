@@ -13,8 +13,8 @@ class ListInstagramComments extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make()
-            ->label('entri data'),
+           //CreateAction::make()
+           //->label('entri data'),
         ];
     }
 }

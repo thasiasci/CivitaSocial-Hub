@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('instagram_comments', function (Blueprint $table) {
             $table->id();
+            $table->string('akun_kolaborasi')->nullable();
             $table->string('link_konten');
+            $table->string('id_instagram')->nullable();
             $table->string('periode')->nullable();
             $table->text('comment');
             $table->string('sentimen')->nullable();

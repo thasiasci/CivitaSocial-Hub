@@ -7,6 +7,8 @@ use BackedEnum;
 use App\Filament\Widgets\InstagramOverview;
 use App\Filament\Widgets\MonthlyTrendChart;
 use App\Filament\Widgets\SentimentAnalysisWidget;
+use App\Filament\Widgets\TopCommenterTableWidget;
+use App\Filament\Widgets\TopContentEngagementWidget;
 use UnitEnum;
 
 class InstagramDashboard extends Page
@@ -20,6 +22,8 @@ class InstagramDashboard extends Page
         return [
             InstagramOverview::class, 
             MonthlyTrendChart::class,
+            TopCommenterTableWidget::class,
+            TopContentEngagementWidget::class,
             SentimentAnalysisWidget::class,
         ];
     }

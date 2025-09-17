@@ -30,7 +30,7 @@ class MonthlyTrendChart extends ChartWidget
                 [
                     'label' => 'Konten ',
                     'data' => $monthlyData->pluck('unique_posts')->toArray(),
-                    'borderColor' => '#ffcc00ff',
+                    'borderColor' => '#ffff00ff',
                     'backgroundColor' => 'rgba(16, 185, 129, 0.1)',
                     'fill' => false,
                     'tension' => 0.4,
@@ -47,6 +47,14 @@ class MonthlyTrendChart extends ChartWidget
                     'label' => 'Sentimen Positif',
                     'data' => $monthlyData->pluck('positive_count')->toArray(),
                     'borderColor' => '#22c55e',
+                    'backgroundColor' => 'rgba(34, 197, 94, 0.1)',
+                    'fill' => false,
+                    'tension' => 0.4,
+                ],
+                [
+                    'label' => 'Sentimen Negatif',
+                    'data' => $monthlyData->pluck('negative_count')->toArray(),
+                    'borderColor' => '#b700ffff',
                     'backgroundColor' => 'rgba(34, 197, 94, 0.1)',
                     'fill' => false,
                     'tension' => 0.4,
