@@ -1,8 +1,8 @@
-# CivitaSocial Hub 
+# ComInfo Social Hub 
 
-## Tentang CivitaSocial Hub 
+## Tentang ComInfo Social Hub 
 
-CivitaSocial Hub  adalah aplikasi berbasis web *dashboard admin* yang dirancang untuk membantu Dinas Komunikasi dan Informatika (Diskominfo) Kabupaten Ciamis dalam menganalisis, dan memahami opini publik dari interaksi di berbagai platform media sosial, khususnya YouTube dan Instagram. 
+ComInfo Social Hub adalah aplikasi berbasis web *dashboard admin* yang dirancang untuk membantu Dinas Komunikasi dan Informatika (Diskominfo) Kabupaten Ciamis dalam menganalisis, dan memahami opini publik dari interaksi di berbagai platform media sosial, khususnya YouTube dan Instagram. 
 
 Aplikasi ini memfasilitasi pengelolaan data komentar yang diimpor secara eksternal, memungkinkan pelabelan sentimen dan klasifikasi spam secara manual, serta menyajikan visualisasi data yang informatif untuk mendukung pengambilan keputusan yang lebih baik.
 
